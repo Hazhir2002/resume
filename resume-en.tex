@@ -2,7 +2,9 @@
 \documentclass[10pt,a4paper]{article}
 \usepackage[margin=1.4cm,top=1.1cm,bottom=1.0cm]{geometry}
 \usepackage{fontspec}
-\setmainfont[Scale=0.93]{TeX Gyre Heros}
+% Load by file name (found via kpathsea) so it works without fontconfig knowing TeX Gyre
+\setmainfont{texgyreheros}[Extension=.otf,UprightFont=*-regular,BoldFont=*-bold,
+  ItalicFont=*-italic,BoldItalicFont=*-bolditalic,Scale=0.93]
 \usepackage{microtype}
 \usepackage{xcolor}
 \usepackage{enumitem}
