@@ -1,0 +1,45 @@
+name: Build & Release Resume
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "**.tex"
+      - "Makefile"
+      - ".github/workflows/release.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write   # needed to create tags and releases
+
+jobs:
+  build-release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install TeX Live and fonts
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            latexmk texlive-xetex texlive-latex-extra texlive-fonts-recommended \
+            texlive-lang-arabic tex-gyre fonts-vazirmatn
+
+      - name: Build PDFs (EN + FA)
+        run: make all
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: resume-pdfs
+          path: build/Hazhir_Yousefi_Resume_*.pdf
+
+      - name: Create GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ github.run_number }}
+          name: Resume v${{ github.run_number }}
+          target_commitish: ${{ github.sha }}
+          make_latest: true
+          generate_release_notes: true
+          files: build/Hazhir_Yousefi_Resume_*.pdf

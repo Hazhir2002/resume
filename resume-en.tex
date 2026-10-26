@@ -1,0 +1,118 @@
+% English resume - build with: make en   (XeLaTeX)
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=1.4cm,top=1.1cm,bottom=1.0cm]{geometry}
+\usepackage{fontspec}
+\setmainfont[Scale=0.93]{TeX Gyre Heros}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage[hidelinks,pdftitle={Hazhir Yousefi - Resume},pdfauthor={Hazhir Yousefi}]{hyperref}
+\definecolor{accent}{HTML}{1F4E79}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\setlist[itemize]{leftmargin=1.1em,itemsep=0.5pt,topsep=1.5pt,parsep=0pt,partopsep=0pt}
+
+% \section{Title}: accent-colored caps heading with a rule
+\renewcommand{\section}[1]{%
+  \vspace{6pt}{\bfseries\color{accent}\MakeUppercase{#1}}\par\nointerlineskip\vspace{1.5pt}%
+  {\color{accent}\hrule height 0.6pt}\vspace{3pt}}
+
+% \entry{title}{organisation}{dates}{location}
+\newcommand{\entry}[4]{%
+  \vspace{3pt}\textbf{#1}\hfill #3\par
+  \textit{#2}\hfill\textit{#4}\par\vspace{1pt}}
+
+% \project{name}{tech}{dates}
+\newcommand{\project}[3]{%
+  \vspace{3pt}\textbf{#1} \textcolor{gray}{|} {\small #2}\hfill #3\par\vspace{1pt}}
+
+\begin{document}
+
+\begin{center}
+  {\fontsize{22}{26}\selectfont\bfseries HAZHIR YOUSEFI}\\[3pt]
+  {\color{accent}\bfseries Senior Software Engineer \,·\, Mobile, Embedded \& AI Systems}\\[3pt]
+  {\small Tehran, Iran \,·\, Open to remote \& relocation \,·\,
+  \href{mailto:Hazhiryousefi2002@gmail.com}{Hazhiryousefi2002@gmail.com} \,·\,
+  +98 993 338 0344}\\[1pt]
+  {\small \href{https://github.com/Hazhir2002}{github.com/Hazhir2002} \,·\,
+  \href{https://linkedin.com/in/hazhir-yousefi-665906232}{linkedin.com/in/hazhir-yousefi-665906232}}
+\end{center}
+
+\section{Summary}
+Senior software engineer with 4+ years of experience, specialising in Flutter mobile apps and embedded Linux
+systems. Sole engineer behind a consumer payments app and a custom Raspberry Pi kiosk OS running on
+about 500 vending machines nationwide. Also builds backend services in FastAPI and Rust, and LLM-powered
+products using RAG and multi-agent pipelines.
+
+\section{Experience}
+
+\entry{Senior Software Engineer}{Modaam}{2024 -- Present}{Tehran, Iran (on-site)}
+\begin{itemize}
+  \item Sole engineer of the Modaam Flutter app (iOS \& Android) for paying at smart vending machines, buying
+        charge packages and tracking orders; used by thousands of users across all provinces of Iran.
+  \item Designed and built a custom kiosk OS (Raspberry Pi + Flutter) for about 500 snack vending machines
+        (about 10,000 daily interactions), covering product dispensing, payments and a merchant settings panel.
+  \item Built an over-the-air update system in Rust (statically linked ARM64 binaries via cross-compilation)
+        to ship releases to the entire machine fleet.
+  \item Hardened and tuned embedded Linux (systemd, kiosk lockdown, remote support) for 24/7 operation; diagnosed
+        field issues including undervoltage crashes, memory leaks and display race conditions.
+  \item Created AXIOM, a custom Flutter design system shared by the kiosk UI and the admin panel (Persian RTL);
+        packaged the FastAPI backend as an ARM64 binary via Docker cross-compilation.
+  \item Owned architecture, testing and deployment end to end, with no QA team.
+\end{itemize}
+
+\entry{Software Developer (Frontend)}{Hotiday}{Feb 2024 -- May 2025}{Remote}
+\begin{itemize}
+  \item Built blog, profile, wallet and dashboard modules (Next.js, Tailwind CSS) from Figma designs on a Django
+        REST API; improved SEO and page performance; delivered a reusable component library.
+\end{itemize}
+
+\entry{Full-Stack Developer}{Sazmanyar}{Mar 2024 -- Jun 2024}{Tehran, Iran}
+\begin{itemize}
+  \item Built a warehouse management system from scratch (.NET Core, React, SQL Server) with role-based access
+        control and real-time inventory tracking; adopted by multiple businesses across Iran.
+\end{itemize}
+
+\entry{Full-Stack Developer}{Arvin Rayan System}{Jun 2022 -- Mar 2024}{Tehran, Iran}
+\begin{itemize}
+  \item Developed and modernised ERP modules (.NET Core, React, Entity Framework); migrated a legacy
+        jQuery / .NET Framework codebase to a modern, scalable architecture.
+  \item Joined client meetings; led backend and frontend tooling upgrades.
+\end{itemize}
+
+\section{Projects}
+
+\project{Pettaio -- AI Pet Assistant App}{Flutter, FastAPI, LangGraph, Chroma, YOLO}{2024 -- Present}
+\begin{itemize}
+  \item Built the full stack solo (Flutter with clean architecture; FastAPI backend); co-founders handle business.
+  \item Multi-agent pipeline (safety check $\rightarrow$ router $\rightarrow$ parallel specialists $\rightarrow$ synthesis)
+        with SSE streaming chat and long-term pet memory.
+  \item RAG with Chroma and cross-encoder reranking, an LLM-as-judge evaluation harness, and a custom-trained YOLO
+        model for pet behaviour analysis; CI/CD to a Hetzner VPS (Docker Compose, Nginx, GitHub Actions).
+\end{itemize}
+
+\project{Tenkai -- Journal \& Fitness App}{Flutter, Drift, Rust, Axum, PostgreSQL}{Personal project}
+\begin{itemize}
+  \item iOS app with voice journaling, book tracker and workout logging (hooks\_riverpod, Drift).
+  \item Rust backend (Axum, Diesel, PostgreSQL) with JWT auth; automated build and deploy via GitHub Actions to GHCR.
+\end{itemize}
+
+\section{Education}
+\entry{B.Eng. Computer Engineering (Software)}{Iran University of Science and Technology (IUST)}{Sep 2020 -- Sep 2025}{Tehran, Iran}
+\begin{itemize}
+  \item Thesis: frontend of TaVAN, a smart labelling system for Persian documents built for a real industry client.
+\end{itemize}
+
+\section{Skills}
+\begin{tabular}{@{}p{3.1cm}p{14cm}@{}}
+  \textbf{Mobile} & Flutter, Dart, BLoC, Riverpod, GoRouter, Drift, Clean Architecture \\
+  \textbf{Embedded} & Raspberry Pi, embedded Linux, systemd, Rust, OTA updates, Docker cross-compilation \\
+  \textbf{Backend \& Web} & Python, FastAPI, Rust (Axum, Diesel), PostgreSQL, SQLite, Django, .NET Core, Next.js, React \\
+  \textbf{AI / ML} & LLM apps (OpenAI, Gemini), RAG, LangGraph, PydanticAI, Chroma, YOLO, HuggingFace \\
+  \textbf{DevOps \& Tools} & Docker, GitHub Actions, Nginx, GHCR, AWS, Git, Pytest, Figma \\
+  \textbf{Languages} & Persian (native), Kurdish (native), English (fluent, professional)
+\end{tabular}
+
+\end{document}

@@ -1,0 +1,125 @@
+% Persian resume - build with: make fa   (XeLaTeX + polyglossia, font: Vazirmatn)
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=1.4cm,top=1.1cm,bottom=1.0cm]{geometry}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage[hidelinks,pdftitle={Hazhir Yousefi - Resume (FA)},pdfauthor={Hazhir Yousefi}]{hyperref}
+% bidi (loaded by polyglossia) must come after xcolor/enumitem/hyperref
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\setmainlanguage{farsi}
+\setotherlanguage{english}
+\setmainfont[Scale=0.9]{Vazirmatn}
+\newfontfamily\farsifont[Scale=0.9,Script=Arabic]{Vazirmatn}
+\newfontfamily\englishfont[Scale=0.9]{Vazirmatn}
+\definecolor{accent}{HTML}{1F4E79}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\linespread{1.0}
+\setlist[itemize]{itemsep=0.5pt,topsep=1.5pt,parsep=0pt,partopsep=0pt}
+
+% Latin run inside Persian text
+\newcommand{\en}[1]{\textenglish{#1}}
+
+\renewcommand{\section}[1]{%
+  \vspace{6pt}{\bfseries\color{accent}#1}\par\nointerlineskip\vspace{1.5pt}%
+  {\color{accent}\hrule height 0.6pt}\vspace{3pt}}
+
+% \entry{title}{organisation}{dates}{location}
+\newcommand{\entry}[4]{%
+  \vspace{3pt}\textbf{#1}\hfill #3\par
+  #2\hfill #4\par\vspace{1pt}}
+
+% \project{name}{tech}{dates}
+\newcommand{\project}[3]{%
+  \vspace{3pt}\textbf{#1} \textcolor{gray}{|} {\small #2}\hfill #3\par\vspace{1pt}}
+
+\begin{document}
+
+\begin{center}
+  {\fontsize{22}{26}\selectfont\bfseries هژیر یوسفی}\\[3pt]
+  {\color{accent}\bfseries مهندس نرم‌افزار ارشد \,·\, موبایل، سیستم‌های نهفته و هوش مصنوعی}\\[3pt]
+  {\small تهران، ایران \,·\, آمادهٔ همکاری دورکاری و مهاجرت \,·\,
+  \en{\href{mailto:Hazhiryousefi2002@gmail.com}{Hazhiryousefi2002@gmail.com}} \,·\,
+  \en{+98 993 338 0344}}\\[1pt]
+  {\small \en{\href{https://github.com/Hazhir2002}{github.com/Hazhir2002}} \,·\,
+  \en{\href{https://linkedin.com/in/hazhir-yousefi-665906232}{linkedin.com/in/hazhir-yousefi-665906232}}}
+\end{center}
+
+\section{خلاصه}
+مهندس نرم‌افزار ارشد با بیش از ۴ سال سابقه، متخصص در توسعهٔ اپلیکیشن‌های موبایل با \en{Flutter} و سیستم‌های لینوکسی نهفته.
+تنها مهندس یک اپلیکیشن پرداخت و یک سیستم‌عامل کیوسک اختصاصی مبتنی بر \en{Raspberry Pi} که روی حدود ۵۰۰ دستگاه فروش خودکار
+در سراسر کشور اجرا می‌شود. تجربهٔ توسعهٔ بک‌اند با \en{FastAPI} و \en{Rust} و ساخت محصولات مبتنی بر \en{LLM}
+با \en{RAG} و پایپ‌لاین‌های چندعاملی.
+
+\section{سوابق کاری}
+
+\entry{مهندس نرم‌افزار ارشد}{\en{Modaam}}{۲۰۲۴ – اکنون}{تهران (حضوری)}
+\begin{itemize}
+  \item تنها مهندس اپلیکیشن موبایل \en{Modaam} (\en{iOS} و \en{Android}) برای پرداخت در دستگاه‌های فروش هوشمند، خرید بسته‌های شارژ
+        و پیگیری سفارش‌ها؛ مورد استفادهٔ هزاران کاربر در تمام استان‌های ایران.
+  \item طراحی و ساخت سیستم‌عامل کیوسک اختصاصی (\en{Raspberry Pi + Flutter}) برای حدود ۵۰۰ دستگاه فروش تنقلات
+        (حدود ۱۰٬۰۰۰ تعامل روزانه)، شامل کنترل سخت‌افزار تحویل کالا، پرداخت و پنل تنظیمات فروشنده.
+  \item ساخت سیستم به‌روزرسانی از راه دور (\en{OTA}) با \en{Rust} (باینری‌های \en{ARM64} استاتیک با کراس‌کامپایل) برای انتشار
+        نسخه‌ها روی کل ناوگان دستگاه‌ها.
+  \item سخت‌سازی و بهینه‌سازی لینوکس نهفته (\en{systemd}، قفل‌کردن کیوسک، پشتیبانی از راه دور) برای کار ۲۴/۷؛ عیب‌یابی مشکلات میدانی
+        از جمله کرش ناشی از افت ولتاژ، نشت حافظه و \en{race condition} در نمایشگر.
+  \item ساخت \en{AXIOM}، دیزاین‌سیستم اختصاصی \en{Flutter} مشترک بین رابط کیوسک و پنل مدیریت (راست‌به‌چپ فارسی)؛
+        بسته‌بندی بک‌اند \en{FastAPI} به‌صورت باینری \en{ARM64} با کراس‌کامپایل \en{Docker}.
+  \item مسئولیت کامل معماری، تست و استقرار، بدون تیم \en{QA}.
+\end{itemize}
+
+\entry{توسعه‌دهندهٔ نرم‌افزار (فرانت‌اند)}{\en{Hotiday}}{فوریه ۲۰۲۴ – مه ۲۰۲۵}{دورکار}
+\begin{itemize}
+  \item توسعهٔ ماژول‌های وبلاگ، پروفایل، کیف پول و داشبورد (\en{Next.js}، \en{Tailwind CSS}) از روی طراحی \en{Figma} با اتصال به
+        \en{REST API} جنگو؛ بهبود \en{SEO} و عملکرد صفحات و تحویل کتابخانهٔ کامپوننت‌های قابل‌استفادهٔ مجدد.
+\end{itemize}
+
+\entry{توسعه‌دهندهٔ فول‌استک}{\en{Sazmanyar}}{مارس ۲۰۲۴ – ژوئن ۲۰۲۴}{تهران}
+\begin{itemize}
+  \item ساخت سیستم مدیریت انبار از صفر (\en{.NET Core}، \en{React}، \en{SQL Server}) با کنترل دسترسی نقش‌محور و ردیابی لحظه‌ای
+        موجودی؛ مورد استفادهٔ چند کسب‌وکار در ایران.
+\end{itemize}
+
+\entry{توسعه‌دهندهٔ فول‌استک}{\en{Arvin Rayan System}}{ژوئن ۲۰۲۲ – مارس ۲۰۲۴}{تهران}
+\begin{itemize}
+  \item توسعه و نوسازی ماژول‌های \en{ERP} (\en{.NET Core}، \en{React}، \en{Entity Framework}) و مهاجرت کدبیس قدیمی
+        \en{jQuery / .NET Framework} به معماری مدرن و مقیاس‌پذیر.
+  \item حضور در جلسات با مشتری و رهبری ارتقای ابزارهای بک‌اند و فرانت‌اند.
+\end{itemize}
+
+\section{پروژه‌ها}
+
+\project{\en{Pettaio} – دستیار هوشمند حیوانات خانگی}{\en{Flutter, FastAPI, LangGraph, Chroma, YOLO}}{۲۰۲۴ – اکنون}
+\begin{itemize}
+  \item توسعهٔ کامل محصول به‌تنهایی (\en{Flutter} با معماری تمیز؛ بک‌اند \en{FastAPI})؛ هم‌بنیان‌گذاران مسئول بخش کسب‌وکار هستند.
+  \item پایپ‌لاین چندعاملی (بررسی ایمنی، مسیریاب، متخصص‌های موازی و ترکیب نهایی پاسخ) با چت استریم (\en{SSE}) و حافظهٔ بلندمدت حیوان خانگی.
+  \item \en{RAG} با \en{Chroma} و بازرتبه‌بندی \en{cross-encoder}، چارچوب ارزیابی \en{LLM-as-judge} و مدل \en{YOLO} آموزش‌دیده برای تحلیل
+        رفتار حیوان؛ \en{CI/CD} روی سرور \en{Hetzner} (\en{Docker Compose}، \en{Nginx}، \en{GitHub Actions}).
+\end{itemize}
+
+\project{\en{Tenkai} – اپلیکیشن ژورنال و تناسب اندام}{\en{Flutter, Drift, Rust, Axum, PostgreSQL}}{پروژهٔ شخصی}
+\begin{itemize}
+  \item اپلیکیشن \en{iOS} با ژورنال صوتی، ردیاب کتاب و ثبت تمرین (\en{hooks\_riverpod}، \en{Drift}).
+  \item بک‌اند \en{Rust} (\en{Axum}، \en{Diesel}، \en{PostgreSQL}) با احراز هویت \en{JWT}؛ بیلد و استقرار خودکار با \en{GitHub Actions} روی \en{GHCR}.
+\end{itemize}
+
+\section{تحصیلات}
+\entry{کارشناسی مهندسی کامپیوتر (نرم‌افزار)}{دانشگاه علم و صنعت ایران}{سپتامبر ۲۰۲۰ – سپتامبر ۲۰۲۵}{تهران}
+\begin{itemize}
+  \item پایان‌نامه: فرانت‌اند «تاوان»، سامانهٔ برچسب‌گذاری هوشمند اسناد فارسی، برای یک کارفرمای صنعتی واقعی.
+\end{itemize}
+
+\section{مهارت‌ها}
+\begin{tabular}{@{}p{2.8cm}p{14.4cm}@{}}
+  \textbf{موبایل} & \en{Flutter, Dart, BLoC, Riverpod, GoRouter, Drift, Clean Architecture} \\
+  \textbf{سیستم‌های نهفته} & \en{Raspberry Pi, embedded Linux, systemd, Rust, OTA updates, Docker cross-compilation} \\
+  \textbf{بک‌اند و وب} & \en{Python, FastAPI, Rust (Axum, Diesel), PostgreSQL, SQLite, Django, .NET Core, Next.js, React} \\
+  \textbf{هوش مصنوعی} & \en{LLM apps (OpenAI, Gemini), RAG, LangGraph, PydanticAI, Chroma, YOLO, HuggingFace} \\
+  \textbf{دواپس و ابزار} & \en{Docker, GitHub Actions, Nginx, GHCR, AWS, Git, Pytest, Figma} \\
+  \textbf{زبان‌ها} & فارسی (مادری)، کردی (مادری)، انگلیسی (مسلط، سطح حرفه‌ای)
+\end{tabular}
+
+\end{document}
