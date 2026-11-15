@@ -88,20 +88,17 @@ I like making things. For the past few years software has been the way I do it, 
 
 \project{Pettaio -- AI Pet Assistant App}{Flutter, FastAPI, LangGraph, Chroma, YOLO}{2024 -- Present}
 \begin{itemize}
-  \item Built the full stack solo (Flutter with clean architecture; FastAPI backend); co-founders handle business.
-  \item Multi-agent pipeline (safety check $\rightarrow$ router $\rightarrow$ parallel specialists $\rightarrow$ synthesis)
-        with SSE streaming chat and long-term pet memory.
-  \item RAG with Chroma and cross-encoder reranking, an LLM-as-judge evaluation harness, and a custom-trained YOLO
-        model for pet behaviour analysis; CI/CD to a Hetzner VPS (Docker Compose, Nginx, GitHub Actions).
+  \item Built the full stack solo (Flutter clean architecture, FastAPI); multi-agent pipeline (safety check
+        $\rightarrow$ router $\rightarrow$ parallel specialists $\rightarrow$ synthesis) with SSE streaming chat and pet memory.
+  \item RAG with reranking, LLM-as-judge eval harness and a custom-trained YOLO model for pet behaviour; CI/CD to a
+        Hetzner VPS (Docker Compose, Nginx, GitHub Actions).
 \end{itemize}
 
-\project{Tenkai -- Full-Stack Journal, Books \& Fitness App}{Flutter, Drift, Rust, Axum, PostgreSQL, Docker}{Personal project (https://github.com/Hazhir2002/tenkai)}
+\project{Tenkai -- Full-Stack Journal, Books \& Fitness App}{Flutter, Drift, Rust, Axum, PostgreSQL}{\href{https://github.com/Hazhir2002/tenkai}{GitHub}}
 \begin{itemize}
-  \item Designed and built a mobile app with voice journaling, book tracking and workout logging, using
-        hooks\_riverpod, a Drift local database with schema migrations, and a native Liquid Glass UI.
-  \item Built the Rust backend from scratch (Axum, Diesel, PostgreSQL): JWT auth, CRUD API and custom
-        PostgreSQL enum types.
-  \item Automated CI/CD with GitHub Actions, publishing Docker images to GHCR.
+  \item Mobile app with voice journaling, book tracking and workout logging (hooks\_riverpod, Drift with schema
+        migrations, native Liquid Glass UI).
+  \item Rust backend from scratch (Axum, Diesel, PostgreSQL) with JWT auth and CRUD API; CI/CD via GitHub Actions to GHCR.
 \end{itemize}
 
 \section{Education}
@@ -113,9 +110,8 @@ I like making things. For the past few years software has been the way I do it, 
 \section{Skills}
 \begin{tabular}{@{}p{3.1cm}p{14cm}@{}}
   \textbf{Mobile} & Flutter, Dart, BLoC, Riverpod, GoRouter, Drift, Clean Architecture \\
-  \textbf{Web} &  Next.js, React, Tailwind CSS, PostCSS \\
+  \textbf{Web \& Backend} & Next.js, React, Tailwind CSS, Python, FastAPI, Rust (Axum, Diesel), Django, .NET Core, PostgreSQL, SQLite \\
   \textbf{Embedded} & Raspberry Pi, embedded Linux, systemd, Rust, OTA updates, Docker cross-compilation \\
-  \textbf{Backend \& Web} & Python, FastAPI, Rust (Axum, Diesel), PostgreSQL, SQLite, Django, .NET Core \\
   \textbf{AI / ML} & LLM apps (OpenAI, Gemini), RAG, LangGraph, PydanticAI, Chroma, YOLO, HuggingFace \\
   \textbf{DevOps \& Tools} & Docker, GitHub Actions, Nginx, GHCR, AWS, Git, Pytest, Figma \\
 \end{tabular}
